@@ -1,0 +1,72 @@
+:root {
+    --backgroundColor:rgb(23, 24, 63);
+    --textColor: rgb(255, 255, 255);
+    --textColor2: rgb(78, 16, 192);
+    --colorHover2: 0 0.4rem 1.4rem 0 rgba(78, 16, 192,0.5);
+    --textColor3: rgb(48, 166, 212);
+    --colorHover3: 0 0.4rem 1.4rem 0 rgba(48, 166, 212,0.5);
+    background-color: var(--backgroundColor);
+}
+
+body{
+    color: var(--textColor)
+}
+
+.choice-container{
+    display: flex;
+    margin-bottom: 0.8rem;
+    width: 100%;
+    border-radius: 4px; 
+    background-color: var(--textColor2);
+    font-size: 3rem;
+    min-width: 80rem;
+}
+
+.choice-container:hover{
+    cursor: pointer;
+    box-shadow: var(--colorHover2);
+    transform: scale(1.02);
+    transition: transform 100ms;
+}
+
+.choice-prefix{
+    padding: 2rem 2.5rem;
+    color: var(--textColor);
+}
+
+.choice-text{
+    padding: 2rem;
+    width: 100%;
+}
+.correct{
+    background:green;
+}
+
+.incorrect{
+    background:red;
+}
+
+/* score, timer and progress style*/
+#hud{
+    display: flex;
+    justify-content: space-between;
+}
+
+.hud-prefix{
+    text-align: center;
+    font-size: 2rem;
+}
+
+.hud-main-text{
+    text-align: center;
+}
+
+#question{
+    font-size: 4rem;
+}
+
+@media screen and (max-width: 768px){
+    .choice-container{
+        min-width: 40rem;
+    }
+} 
