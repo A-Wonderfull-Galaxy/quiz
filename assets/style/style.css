@@ -1,0 +1,135 @@
+/* =============root var data======= */
+:root {
+    --backgroundColor:rgb(23, 24, 63);
+    --textColor: rgb(255, 255, 255);
+    --textColor2: rgb(78, 16, 192);
+    --colorHover2: 0 2px 4px 0 rgba(78, 16, 192,);
+    --textColor3: rgb(48, 166, 212);
+    --colorHover3: 0 2px 4px 0 rgba(48, 166, 212,);
+    ---placeHolderColor: rgb(104, 99, 145);
+    background-color: var(--backgroundColor);
+}
+
+/*===========universal settings=========*/
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-size: 62,5%;
+}
+
+/*======basic elemets========*/
+h1{
+    font-size: 5,6px;
+    color: var(--textColor);
+    margin-bottom: 2rem;
+}
+
+h2{
+    font-size: 4,3px;
+    margin-bottom: 5px;
+}
+
+/*=============container boxes=========*/
+.container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 30px;
+    padding: 5px;
+}
+.flex-column{
+    display: flex;
+    flex-direction: column;
+}
+.flex-center{
+    justify-content: center;
+    align-items: center;
+}
+.justify-center {
+    justify-content: center;
+}
+
+/*============text styles=============*/
+.text-center{
+    text-align: center;
+}
+
+/*===========hide item=======*/
+.hidden{
+    display: none;
+}
+
+/*=============button styles==============*/
+.btn{
+    font-size: 4px;
+    padding: 3px 0;
+    width: 20px;
+    text-align: center;
+    margin-bottom: 1px;
+    text-decoration: none;
+    color: var(--textColor3);
+    background: linear-gradient(90deg, rgb(78, 16, 192) 0%, rgb(99, 6, 185) 100%);
+    border-radius: 7px;
+}
+.btn:hover{
+    cursor: pointer;
+    box-shadow: var(--colorHover2);
+}
+.btn[disabled]:hover{
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+/*================highscores styles===========*/
+#highscore-btn{
+    background: linear-gradient(90deg, rgb(48, 166, 212) 0%, rgb(5, 94, 167) 100%);
+    color: var(--textColor2);
+}
+
+#highscore-btn:hover{
+    box-shadow:  var(--colorHover2) ;
+}
+
+/*=================are you ready text style===========*/
+.areYouReady{
+    font-size: 8px;
+}
+
+/*================Highscore page html==================*/
+.end-form-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 20px;
+}
+/*===============form style in highscore page=========*/
+input{
+    margin-bottom: 1px;
+    width: 20px;
+    padding: 3px;
+    font-size: 3px;
+    border: none;
+    border-radius: 10px;
+    text-align: center;
+}
+input::placeholder{
+    color: var(---placeHolderColor);
+}
+/*username style*/
+#username{
+    margin-bottom: 4px;
+    width: 100%;
+    outline: none;
+}
+/*end*/
+#end-text {
+    font-size: 5px;
+    color: var(--textColor);
+    text-align: center;
+}
+

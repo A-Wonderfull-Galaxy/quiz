@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <link rel="stylesheet" href="./assets/style/style.css">
+    <link rel="stylesheet" href="./assets/style/quiz.css">
+</head>
+<body>
+    <div class="container">
+        <div id="game" class="justify-center flex-column">
+            <div id="hub">
+                <div class="hud-item">
+                    <p id="progressText" class="hud-prefix">
+                        Question
+                    </p>
+                    
+                </div>
+                <div class="hud-item">
+                    <P class="hud-prefix">
+                        Score
+                    </P>
+                    <h1 class="hud-main-text" id="score">
+                        0
+                    </h1>
+                    <p class="hud-prefix">
+                        Seconds left
+                    </p>
+                    <h1 class="hud-main-text">
+                        : <span id="gameTimer"> </span>
+                    </h1>
+                </div>
+            </div>
+            <h1 id="question">What is the answer to this question?</h1>
+            <div class="choice-container">
+                <p class="choice-dot">(A)</p>
+                <p class="choice-text" data-number="1">Choice 1</p>
+            </div>
+            <div class="choice-container">
+                <p class="choice-dot">(B)</p>
+                <p class="choice-text" data-number="2">Choice 2</p>
+            </div>
+            <div class="choice-container">
+                <p class="choice-dot">(C)</p>
+                <p class="choice-text" data-number="3">Choice 3</p>
+            </div>
+            <div class="choice-container">
+                <p class="choice-dot">(D)</p>
+                <p class="choice-text" data-number="4">Choice 4</p>
+            </div>
+        </div>
+    </div>
+    <script src="./assets/javascript/quiz.js"></script>
+</body>
+</html>
