@@ -1,9 +1,10 @@
+/*style for highscore page*/
 h1{
-    font-size: 6rem;
-}
-li{
-    font-size: 3rem;
+    font-size: 10px;
 }
 ul{
-    padding-bottom: 2rem ;
+    padding-bottom: 3px ;
+}
+li{
+    font-size: 5px;
 }

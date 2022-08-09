@@ -3,7 +3,9 @@ const choices = Array.from(document.querySelectorAll('.choice-text'))
 const progressText = document.querySelector('#progressText')
 const scoreText = document.querySelector('#score')
 
+//lets the timer be 30 seconds
 let gameTime = 30;
+//apends the clock to the page
 var timeEl = document.getElementById("gameTimer");
 
 let currentQuestion = {}
@@ -12,6 +14,7 @@ let score = 0
 let questionCounter = 0
 let availableQuestions = []
 
+//this are the questions being used only 5 
 let questions = [
     {
         question: "How do you make a question on HTML?",
@@ -59,6 +62,7 @@ let questions = [
     }
 ] 
 
+//grabs timer and to run for the page
 function gameTimer() {
     var countdown = setInterval(function () {
         timeEl.textContent = gameTime;
@@ -75,6 +79,7 @@ function gameTimer() {
     }, 1000);
 }
 
+//clock function. if time ends it stops the quiz. if answer is correct then it adds time
 function gameTimeStop(interval) {
     let gameTime = 0;
     timeEl.textContent = gameTime;
@@ -84,6 +89,7 @@ function gameTimeStop(interval) {
 const SCORE_POINTS = 100
 const MAX_QUESTIONS = 5
 
+//starts the game function
 startGame = () =>{
     questionCounter = 0
     score = 0
@@ -93,6 +99,7 @@ startGame = () =>{
     getNewQuestion()
 }
 
+//gets question and grabs a new question randomly
 getNewQuestion = () => {
     if(availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS){
         localStorage.setItem('mostRecentScore', score)
@@ -117,6 +124,7 @@ getNewQuestion = () => {
     acceptingAnswers = true
 }
 
+//function for what each choice does and either adds time of doesnt, then sees if answer is correct or false
 choices.forEach(choice => {
     choice.addEventListener('click', e => {
         if(!acceptingAnswers) return
@@ -146,6 +154,7 @@ choices.forEach(choice => {
     })
 })
 
+//when question is correct it increments the score
 incrementScore = num => {
     score +=num
     scoreText.innerText = score
