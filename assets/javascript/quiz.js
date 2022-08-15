@@ -110,7 +110,7 @@ getNewQuestion = () => {
     questionCounter++
     progressText.innerText = `Question ${questionCounter} of ${MAX_QUESTIONS}`
     
-    const questionsIndex = Math.floor(Math.random() * availableQuestions.length)
+    const questionsIndex = availableQuestions.length)
     currentQuestion = availableQuestions[questionsIndex]
     question.innerText = currentQuestion.question
 
