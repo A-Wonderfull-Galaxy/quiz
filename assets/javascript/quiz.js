@@ -1,18 +1,31 @@
-const question = document.querySelector('#question')
-const choices = Array.from(document.querySelectorAll('.choice-text'))
-const progressText = document.querySelector('#progressText')
-const scoreText = document.querySelector('#score')
-
-//lets the timer be 30 seconds
+let question = document.querySelector('#question')
+let scoreText = document.querySelector('#score')
 let gameTime = 30;
-//apends the clock to the page
-var timeEl = document.getElementById("gameTimer");
-
+let timeEl = document.getElementById("gameTimer");
+let choices = Array.from(document.querySelectorAll('.choice-text'))
+let progressText = document.querySelector('#progressText')
 let currentQuestion = {}
 let acceptingAnswers = true
 let score = 0
-let questionCounter = 0
 let availableQuestions = []
+
+// var startButton = document.getElementById('start-btn');
+// var nextButton = document.getElementById('next-btn');
+// var questionContainer = document.getElementById('question-container');
+// var timerEl = document.getElementById('timer');
+// var questionElement = document.getElementById('question');
+// var answerButtonsEl = document.getElementById('answer-buttons');
+// var highScoreEl = document.getElementById('high-score');
+// var currentScore = 0;
+// var timeInterval;
+// var startTime = 60;
+// var timeLeft;
+// let currentQuestionIndex = 0;
+// var endGameContainer = document.getElementById('end-game');
+// var playerInitialsEl = document.getElementById('player-initials-el');
+// var endGameTextEl = document.getElementById('end-game-text');
+// var endGameScoreEl = document.getElementById('end-game-subtext');
+
 
 //this are the questions being used only 5 
 let questions = [
@@ -63,13 +76,13 @@ let questions = [
 ] 
 
 //grabs timer and to run for the page
-function gameTimer() {
+let gameTimer = function() {
     var countdown = setInterval(function () {
         timeEl.textContent = gameTime;
         gameTime--;
         if (gameTime === 0) {
             gameTimeStop(countdown);
-            return window.location.assign('./saveHighScore.html');
+            return window.location.assign('./');
         } else if (gameTime < 0) {
             gameTimeStop(countdown);
             timeEl.textContent = 0;
@@ -80,17 +93,16 @@ function gameTimer() {
 }
 
 //clock function. if time ends it stops the quiz. if answer is correct then it adds time
-function gameTimeStop(interval) {
+let gameTimeStop = function (interval) {
     let gameTime = 0;
     timeEl.textContent = gameTime;
     clearInterval(interval);
 }
 
-const SCORE_POINTS = 100
-const MAX_QUESTIONS = 5
-
+let SCORE_POINTS = 100
+let MAX_QUESTIONS = 5
 //starts the game function
-startGame = () =>{
+let startGame = function (){
     questionCounter = 0
     score = 0
     gameTime = 30
@@ -100,7 +112,7 @@ startGame = () =>{
 }
 
 //gets question and grabs a new question randomly
-getNewQuestion = () => {
+let getNewQuestion = function () {
     if(availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS){
         localStorage.setItem('mostRecentScore', score)
 
@@ -110,7 +122,7 @@ getNewQuestion = () => {
     questionCounter++
     progressText.innerText = `Question ${questionCounter} of ${MAX_QUESTIONS}`
     
-    const questionsIndex = availableQuestions.length)
+    const questionsIndex = Math.floor(Math.random() * availableQuestions.length)
     currentQuestion = availableQuestions[questionsIndex]
     question.innerText = currentQuestion.question
 
@@ -126,12 +138,12 @@ getNewQuestion = () => {
 
 //function for what each choice does and either adds time of doesnt, then sees if answer is correct or false
 choices.forEach(choice => {
-    choice.addEventListener('click', e => {
+    choice.addEventListener('click', function(e) {
         if(!acceptingAnswers) return
 
         acceptingAnswers = false
-        const selectedChoice = e.target
-        const selectedAnswer = selectedChoice.dataset['number']
+        let selectedChoice = e.target
+        let selectedAnswer = selectedChoice.dataset['number']
 
         let classToApply = selectedAnswer == currentQuestion.answer ? 'correct' : 
         'incorrect'
@@ -140,7 +152,6 @@ choices.forEach(choice => {
             incrementScore(SCORE_POINTS)
             gameTime += 10
         } else {
-            //
             gameTime -= 10
         }
 
@@ -154,10 +165,66 @@ choices.forEach(choice => {
     })
 })
 
+//worked with chris to help me out try to redo this project
+
 //when question is correct it increments the score
 incrementScore = num => {
     score +=num
     scoreText.innerText = score
 }
+
+// function startQuiz() {
+
+//     startTimer();
+
+//     displayQuestion();
+
+//     startButton.classList.add('hide');
+//     questionContainer.classList.remove('hide');
+
+// }
+
+// function nextQuestion() {
+//     //clear the question container to prepare to append answer options
+//     clearQuestionContainer();
+//     currentQuestionIndex ++;
+//     displayQuestion(); 
+// }
+
+// function displayQuestion() {
+//       //question if current index < index length
+    
+//     if (currentQuestionIndex < questions.length) {
+//         //show the question and answer elements
+//         answerButtonsEl.classList.remove('hide');
+//         questionElement.classList.remove('hide');
+//         //assign question to current question index
+//         let question = questions[currentQuestionIndex].question;
+//         questionElement.textContent = question;
+        
+    
+//         //loop through answer options and append them to the container
+//         questions[currentQuestionIndex].answers.forEach(answer => {
+//             const button = document.createElement('button');
+//             button.innerText = answer.text;
+//             button.classList.add('btn-answer');
+
+    
+//             //assign a string to the correct answer if it is selected
+//             if (answer.correct) {
+//                 button.dataset.correct = answer.correct;
+//             }
+
+//             //call select answer function if button is clicked 
+//             button.addEventListener('click', selectAnswer);
+
+    
+//             answerButtonsEl.appendChild(button);
+//       })
+//     }
+//         else {
+//             endGame(highScoreObj);
+//         }
+// }
 
 startGame()
