@@ -10,12 +10,6 @@
     background-color: var(--backgroundColor);
 }
 
-
-/*======basic elemets========*/
-h1{
-    color: var(--textColor);
-}
-
 /*=============container boxes=========*/
 .container{
     display: flex;
@@ -69,29 +63,3 @@ h1{
 #highscore-btn:hover{
     box-shadow:  var(--colorHover2) ;
 }
-
-/*================Highscore page html==================*/
-.end-form-container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-/*===============form style in highscore page=========*/
-input{
-    border: none;
-    border-radius: 10px;
-    text-align: center;
-}
-input::placeholder{
-    color: var(---placeHolderColor);
-}
-/*username style*/
-#username{
-    outline: none;
-}
-/*end*/
-#end-text {
-    color: var(--textColor);
-    text-align: center;
-}
-
