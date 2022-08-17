@@ -77,17 +77,8 @@ let questions = [
 
 //grabs timer and to run for the page
 let gameTimer = function() {
-    var countdown = setInterval(function () {
-        timeEl.textContent = gameTime;
-        gameTime--;
-        if (gameTime === 0) {
-            gameTimeStop(countdown);
-            return window.location.assign('./');
-        } else if (gameTime < 0) {
-            gameTimeStop(countdown);
-            timeEl.textContent = 0;
-            endGame();
-        }
+    
+       
         console.log(countdown)
     }, 1000);
 }
@@ -106,60 +97,19 @@ let startGame = function (){
     questionCounter = 0
     score = 0
     gameTime = 30
-    availableQuestions = [...questions]
     gameTimer()
     getNewQuestion()
 }
 
 //gets question and grabs a new question randomly
 let getNewQuestion = function () {
-    if(availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS){
-        localStorage.setItem('mostRecentScore', score)
-
-        return window.location.assign('./saveHighScore.html')
-    } 
-
-    questionCounter++
-    progressText.innerText = `Question ${questionCounter} of ${MAX_QUESTIONS}`
     
-    const questionsIndex = Math.floor(Math.random() * availableQuestions.length)
-    currentQuestion = availableQuestions[questionsIndex]
-    question.innerText = currentQuestion.question
-
-    choices.forEach(choice => {
-        const number = choice.dataset['number']
-        choice.innerText = currentQuestion['choice' + number]
-    })
-
-    availableQuestions.splice (questionsIndex, 1)
-
-    acceptingAnswers = true
+    questionCounter++
+    
 }
 
 //function for what each choice does and either adds time of doesnt, then sees if answer is correct or false
 choices.forEach(choice => {
-    choice.addEventListener('click', function(e) {
-        if(!acceptingAnswers) return
-
-        acceptingAnswers = false
-        let selectedChoice = e.target
-        let selectedAnswer = selectedChoice.dataset['number']
-
-        let classToApply = selectedAnswer == currentQuestion.answer ? 'correct' : 
-        'incorrect'
-
-        if(classToApply === 'correct'){
-            incrementScore(SCORE_POINTS)
-            gameTime += 10
-        } else {
-            gameTime -= 10
-        }
-
-        selectedChoice.parentElement.classList.add(classToApply)
-
-        setTimeout(() => {
-            selectedChoice.parentElement.classList.remove(classToApply)
-            getNewQuestion()
 
         }, 1000)
     })
@@ -184,47 +134,5 @@ incrementScore = num => {
 
 // }
 
-// function nextQuestion() {
-//     //clear the question container to prepare to append answer options
-//     clearQuestionContainer();
-//     currentQuestionIndex ++;
-//     displayQuestion(); 
-// }
-
-// function displayQuestion() {
-//       //question if current index < index length
-    
-//     if (currentQuestionIndex < questions.length) {
-//         //show the question and answer elements
-//         answerButtonsEl.classList.remove('hide');
-//         questionElement.classList.remove('hide');
-//         //assign question to current question index
-//         let question = questions[currentQuestionIndex].question;
-//         questionElement.textContent = question;
-        
-    
-//         //loop through answer options and append them to the container
-//         questions[currentQuestionIndex].answers.forEach(answer => {
-//             const button = document.createElement('button');
-//             button.innerText = answer.text;
-//             button.classList.add('btn-answer');
-
-    
-//             //assign a string to the correct answer if it is selected
-//             if (answer.correct) {
-//                 button.dataset.correct = answer.correct;
-//             }
-
-//             //call select answer function if button is clicked 
-//             button.addEventListener('click', selectAnswer);
-
-    
-//             answerButtonsEl.appendChild(button);
-//       })
-//     }
-//         else {
-//             endGame(highScoreObj);
-//         }
-// }
 
 startGame()
